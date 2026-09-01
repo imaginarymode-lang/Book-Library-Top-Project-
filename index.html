@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library Tab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grid-container">
+        <h1>Only Authorized Person Can Access This (Staff)</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="Admin" placeholder="Admin" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="123456789" placeholder="hint:1 to 9" required>
+            <button type="submit">Access</button>
+        </form>
+    </div>
+
+    <div class="button-container">
+        <button id="addBookBtn" disabled>Add Book</button>
+    </div>
+
+    <table class="book-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Pages Total</th>
+                <th>Read Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="bookList">
+            
+        </tbody>
+    </table>  
+    <dialog class="bookDialog">
+        <form id="bookForm" method="dialog">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required>
+            <label for="year">Year:</label>
+            <input type="number" id="year" name="year" required>
+            <label for="pages">Pages Total:</label>
+            <input type="number" id="pages" name="pages" required>
+            <label for="readStatus">Read Status:</label>
+            <select id="readStatus" name="readStatus">
+                <option value="Read">Read</option>
+                <option value="Not Read">Not Read</option>
+            </select>
+            <button type="submit">Add Book</button>
+            <button type="button" id="closeDialogBtn">Cancel</button>
+        </form>
+    </dialog>  
+    <script src="script.js"></script>
+</body>
+</html>
