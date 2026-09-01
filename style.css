@@ -1,3 +1,7 @@
+* {
+    background-colour: grey;
+}
+
 .grid-container {
     box-sizing: border-box;
     background-color: #302f2f;
