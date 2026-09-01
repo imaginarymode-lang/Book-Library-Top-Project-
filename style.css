@@ -1,5 +1,7 @@
-* {
-    background-colour: grey;
+html, body {
+    background-color: grey;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .grid-container {
