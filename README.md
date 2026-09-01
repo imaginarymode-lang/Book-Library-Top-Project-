@@ -9,3 +9,5 @@ and Good Luck!!
 my opinion: memorising all things is not important as understanding how it works along learning path!!!!!!
 
 live demo: https://imaginarymode-lang.github.io/Book-Library-Top-Project-/
+
+noted :- i am not sure because i saw this web project show full background colour dark-grey in desktop/laptop. But in mobile it show white. i guess only @media will solve it but not now it is for project learning tracks. OK!!
