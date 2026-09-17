@@ -3,6 +3,64 @@ const closeDialogBtn = document.getElementById('closeDialogBtn');
 const bookDialog = document.querySelector('.bookDialog');
 const bookForm = document.getElementById('bookForm');
 const bookList = document.getElementById('bookList');
+const loginForm = document.getElementById('loginForm');
+
+class Book {
+    constructor(title, author, pages, year, readStatus) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.year = year;
+        this.readStatus = readStatus;
+    }
+
+    toggleRead() {
+        this.readStatus = this.readStatus === 'Read' ? 'Not Read' : 'Read';
+    }
+}
+
+const myLibrary = [];
+
+function addBookToLibrary(title, author, pages, year, readStatus) {
+    const newBook = new Book(title, author, pages, year, readStatus);
+    myLibrary.push(newBook);
+}
+
+function renderLibrary() {
+    bookList.textContent = "";
+
+    myLibrary.forEach((book) => {
+        const row = bookList.insertRow();
+
+        const titleCell = row.insertCell();
+        const authorCell = row.insertCell();
+        const yearCell = row.insertCell();
+        const pagesCell = row.insertCell();
+        const statusCell = row.insertCell();
+        const actionsCell = row.insertCell();
+
+        titleCell.textContent = book.title;
+        authorCell.textContent = book.author;
+        pagesCell.textContent = book.pages;
+        yearCell.textContent = book.year;
+        statusCell.textContent = book.readStatus;
+        statusCell.style.cursor = 'pointer';
+        statusCell.addEventListener('click', () => {
+            book.toggleRead();
+            renderLibrary();
+        });
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.addEventListener('click', () => {
+            const index = myLibrary.indexOf(book);
+            myLibrary.splice(index, 1);
+            renderLibrary();
+        });
+        actionsCell.appendChild(deleteBtn);
+    });
+    
+}
 
 loginForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -34,36 +92,8 @@ bookForm.addEventListener('submit', (event) => {
     const pages = document.getElementById('pages').value;
     const readStatus = document.getElementById('readStatus').value;
 
-    const row = document.createElement('tr');
-
-    const tdTitle = document.createElement('td');
-    tdTitle.textContent = title;
-
-    const tdAuthor = document.createElement('td');
-    tdAuthor.textContent = author;
-
-    const tdYear = document.createElement('td');
-    tdYear.textContent = year;
-
-    const tdPages = document.createElement('td');
-    tdPages.textContent = pages;
-
-    const tdStatus = document.createElement('td');
-    const statusBadge = document.createElement('span');
-    statusBadge.className =`status-badge ${readStatus === 'Read' ? 'read' : 'not-read'}`;
-    statusBadge.textContent = readStatus;
-    tdStatus.appendChild(statusBadge);
-
-    const tdActions = document.createElement('td');
-    const deleteBtn = document.createElement('button');
-    deleteBtn.className = 'btn-delete';
-    deleteBtn.textContent = 'Delete';
-    deleteBtn.addEventListener('click', () => 
-        row.remove());
-    tdActions.appendChild(deleteBtn);
-
-    row.append(tdTitle, tdAuthor, tdYear, tdPages, tdStatus, tdActions);
-    bookList.appendChild(row);
+    addBookToLibrary(title, author, pages, year, readStatus);
+    renderLibrary();
 
     bookDialog.close();
     bookForm.reset();
