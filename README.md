@@ -11,3 +11,5 @@ my opinion: memorising all things is not important as understanding how it works
 live demo: https://imaginarymode-lang.github.io/Book-Library-Top-Project-/
 
 noted :- this work size for desktop size but for mobile it might behave differently in term of size. only @media can solve it but not now it is for learning progess. Ok!!
+
+I didn't expect to come back to this project when I reached the **Classes** lesson. No wonder I saw something like this in a community solution before! 😄 Anyway, good luck!
